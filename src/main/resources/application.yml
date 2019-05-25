@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: myproperties, service
+myproperties:
+  prop1: Hello
+  prop2: There
+otherproperties:
+  other1: something is wrong

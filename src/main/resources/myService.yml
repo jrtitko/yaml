@@ -1,0 +1,3 @@
+service:
+  myprop1: Hello
+  myprop2: World

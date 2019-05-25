@@ -1,0 +1,37 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.industriousgnomes'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // mandatory dependencies for using Spock
+    implementation "org.codehaus.groovy:groovy-all:2.5.5"
+    testImplementation "org.spockframework:spock-core:1.2-groovy-2.5"
+    testImplementation "org.spockframework:spock-spring:1.2-groovy-2.5"  // required to use spring
+
+    // optional dependencies for using Spock
+    testCompile "org.hamcrest:hamcrest-core:2.1" // only necessary if Hamcrest matchers are used
+    testRuntime "net.bytebuddy:byte-buddy:1.9.6"          // allows mocking of classes (in addition to interfaces)
+    testRuntime "org.objenesis:objenesis:3.0.1"    // allows mocking of classes without default constructor (together with CGLIB)
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // see: https://docs.spring.io/spring-boot/docs/2.1.5.RELEASE/reference/html/configuration-metadata.html#configuration-metadata-annotation-processor
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+}
